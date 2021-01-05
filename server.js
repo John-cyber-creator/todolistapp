@@ -5,7 +5,6 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const dotenv = require('dotenv');
-const path = require('path');
 const methodOverride = require('method-override');
 const Task = require('./models/task');
 const app = express();
