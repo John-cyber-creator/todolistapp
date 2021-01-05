@@ -78,6 +78,6 @@ app.delete('/:id', async (req,res) => {
   res.redirect('/')
 });
 
-const PORT = process.env.PORT || 4000;
+let PORT = process.env.PORT || 4000;
 
 app.listen(PORT, console.log(`Server running on  ${PORT}`));
