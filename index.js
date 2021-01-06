@@ -9,7 +9,6 @@ const methodOverride = require('method-override');
 const Task = require('./models/task');
 const app = express();
 let PORT = process.env.PORT || 4000;
-const uri = process.env.MONGODB_URI;
 
 
 // Passport Config
