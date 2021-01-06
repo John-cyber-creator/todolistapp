@@ -8,6 +8,8 @@ const dotenv = require('dotenv');
 const methodOverride = require('method-override');
 const Task = require('./models/task');
 const app = express();
+let PORT = process.env.PORT || 4000;
+const uri = process.env.MONGODB_URI;
 
 
 // Passport Config
@@ -17,7 +19,7 @@ require('./config/passport')(passport);
 dotenv.config();
 
 // Connect to MongoDB
-mongoose.connect(process.env.DB_CONNECT, {useNewUrlParser: true, useUnifiedTopology:true } , () => console.log('DB Connected...'))
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology:true } , () => console.log('DB Connected...'))
 
 // EJS
 app.use(expressLayouts);
@@ -77,7 +79,5 @@ app.delete('/:id', async (req,res) => {
   await Task.findByIdAndDelete(req.params.id)
   res.redirect('/')
 });
-
-let PORT = process.env.PORT || 4000;
 
 app.listen(PORT, console.log(`Server running on  ${PORT}`));
