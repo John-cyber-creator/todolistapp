@@ -28,12 +28,12 @@ module.exports = (passport) => {
     })
   );
 
-  passport.serializeUser( (user, done) => {
+  passport.serializeUser( function(user, done){
     done(null, user.id);
   });
 
-  passport.deserializeUser( async (id, done) => {
-    await User.findById(id, (err, user) => {
+  passport.deserializeUser( function(id, done){
+     User.findById(id, (err, user) => {
       done(err, user);
     });
   });
