@@ -13,7 +13,7 @@ router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
 router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
 
 // Register
-router.post('/register', async (req, res) => {
+router.post('/register', (req, res) => {
   const { name, email, password, password2 } = req.body;
   let errors = [];
 
@@ -38,7 +38,7 @@ router.post('/register', async (req, res) => {
       password2
     });
   } else {
-    await User.findOne({ email: email }).then(user => {
+    User.findOne({ email: email }).then(user => {
       if (user) {
         errors.push({ msg: 'Email already exists' });
         res.render('register', {
